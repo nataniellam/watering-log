@@ -8,10 +8,10 @@
 <title>Watering Log</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;700&family=Geist+Mono:wght@400;500&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;700&display=swap">
 <style>
 /* Style: achromatic ledger (taste-skill seed 420611186). Chrome in ink, one hue (#1d5fbf) on today's round,
-   red only on overdue, green only on watered. Geist for words, Geist Mono for every figure. */
+   red only on overdue, green only on watered. Geist throughout, with tabular figures for numbers. */
 :root {
   --bg: #f8f8f8;
   --surface: #ffffff;
@@ -42,10 +42,9 @@
   --shadow-sm: none;
   --shadow: none;
   --scrim: rgb(0 0 0 / .4);
-  /* Type: Geist for words, Geist Mono for figures. Five sizes: 13 small, 14 body, 16 section, 24 title, 30 figure */
+  /* Type: Geist throughout, tabular figures for numbers. Five sizes: 13 small, 14 body, 16 section, 24 title, 30 figure */
   --f-display: "Geist", Inter, system-ui, sans-serif;
   --f-body: "Geist", Inter, system-ui, sans-serif;
-  --f-mono: "Geist Mono", ui-monospace, "SF Mono", Menlo, monospace;
   --fs-1: .8125rem;   /* 13px small: labels, tags, metadata */
   --fs-2: .875rem;    /* 14px body: text, buttons, inputs */
   --fs-3: 1rem;       /* 16px section: section titles, plant names */
@@ -109,7 +108,7 @@ a { color: var(--ink); text-decoration-color: var(--control); text-underline-off
 .brand-mark { width: 36px; height: 36px; border-radius: 6px; display: grid; place-items: center; background: var(--primary); color: var(--primary-ink); flex: none; }
 .brand-mark svg { width: 20px; height: 20px; }
 .brand b { font-family: var(--f-display); font-size: var(--fs-2); font-weight: 500; letter-spacing: var(--track-tight); display: block; line-height: 1.2; }
-.brand span { font-size: var(--fs-1); color: var(--muted); font-family: var(--f-mono); }
+.brand span { font-size: var(--fs-1); color: var(--muted); font-family: var(--f-body); font-variant-numeric: tabular-nums; }
 
 .btn {
   display: inline-flex; align-items: center; justify-content: center; gap: 7px; border-radius: var(--r-sm); min-height: 36px; font-size: var(--fs-btn);
@@ -136,14 +135,14 @@ a { color: var(--ink); text-decoration-color: var(--control); text-underline-off
 .ring .track { stroke: var(--surface-2); }
 .ring .bar { stroke: var(--water); transition: stroke-dashoffset .6s cubic-bezier(.2,.8,.2,1); }
 .ring .center { position: absolute; inset: 0; display: grid; place-content: center; gap: 2px; text-align: center; }
-.ring .center b { font-family: var(--f-mono); font-size: var(--fs-4); font-weight: 500; letter-spacing: var(--track-tight); line-height: 1; font-variant-numeric: tabular-nums; }
+.ring .center b { font-family: var(--f-body); font-variant-numeric: tabular-nums; font-size: var(--fs-4); font-weight: 500; letter-spacing: var(--track-tight); line-height: 1; }
 .ring .center span { font-size: var(--fs-1); color: var(--muted); }
 .today-copy { display: grid; gap: 12px; min-width: 0; }
 .today-copy .date { font-size: var(--fs-2); color: var(--muted); font-weight: 600; }
 .stats { display: flex; flex-wrap: wrap; gap: 6px 20px; }
 .finding { font-size: var(--fs-2); color: var(--muted); max-width: 60ch; }
 .stat { display: inline-flex; align-items: baseline; gap: 6px; font-size: var(--fs-2); color: var(--muted); }
-.stat i { font-style: normal; font-family: var(--f-mono); font-size: var(--fs-3); font-weight: 500; color: var(--ink); font-variant-numeric: tabular-nums; }
+.stat i { font-style: normal; font-family: var(--f-body); font-variant-numeric: tabular-nums; font-size: var(--fs-3); font-weight: 500; color: var(--ink); }
 .stat.late i { color: var(--late); }
 .stat.due i { color: var(--water); }
 .stat.done i { color: var(--leaf); }
@@ -151,7 +150,7 @@ a { color: var(--ink); text-decoration-color: var(--control); text-underline-off
 /* Sections */
 .section-head { display: flex; flex-wrap: wrap; align-items: baseline; justify-content: space-between; gap: 6px 16px; margin-bottom: 14px; }
 .section-head .label { font-weight: 400; text-transform: none; letter-spacing: 0; }
-.count { font-family: var(--f-mono); font-size: var(--fs-1); font-weight: 400; color: var(--muted); background: var(--surface-2); border-radius: 999px; padding: 2px 9px; margin-left: 6px; vertical-align: middle; }
+.count { font-family: var(--f-body); font-variant-numeric: tabular-nums; font-size: var(--fs-1); font-weight: 400; color: var(--muted); background: var(--surface-2); border-radius: 999px; padding: 2px 9px; margin-left: 6px; vertical-align: middle; }
 
 /* Task list */
 .tasks { list-style: none; margin: 0; padding: 0; display: grid; gap: 10px; }
@@ -171,7 +170,7 @@ a { color: var(--ink); text-decoration-color: var(--control); text-underline-off
 .t-name { font-family: var(--f-display); font-weight: 500; font-size: var(--fs-3); line-height: 1.25; color: var(--ink); overflow-wrap: anywhere; background: none; border: 0; padding: 0; text-align: left; }
 .t-name:hover { text-decoration: underline; text-underline-offset: 3px; }
 .t-meta { color: var(--muted); font-size: var(--fs-1); }
-.pill { display: inline-flex; align-items: center; gap: 5px; font-family: var(--f-mono); font-size: var(--fs-1); font-weight: 400; letter-spacing: 0; line-height: 1; padding: 5px 8px; border-radius: 4px; background: var(--surface-2); color: var(--muted); white-space: nowrap; }
+.pill { display: inline-flex; align-items: center; gap: 5px; font-family: var(--f-body); font-variant-numeric: tabular-nums; font-size: var(--fs-1); font-weight: 400; letter-spacing: 0; line-height: 1; padding: 5px 8px; border-radius: 4px; background: var(--surface-2); color: var(--muted); white-space: nowrap; }
 .pill svg { width: 13px; height: 13px; }
 .pill.late { background: var(--late-soft); color: var(--late-text); }
 .pill.due { background: var(--water-soft); color: var(--water-text); }
@@ -196,7 +195,7 @@ a { color: var(--ink); text-decoration-color: var(--control); text-underline-off
 .day.is-today { background: var(--ink); color: var(--bg); }
 .day.is-today .dow, .day.is-today .n { color: var(--bg); }
 .day .dow { font-size: var(--fs-1); font-weight: 400; color: var(--muted); }
-.day .dnum { font-family: var(--f-mono); font-size: var(--fs-3); font-weight: 500; line-height: 1; font-variant-numeric: tabular-nums; }
+.day .dnum { font-family: var(--f-body); font-variant-numeric: tabular-nums; font-size: var(--fs-3); font-weight: 500; line-height: 1; }
 .faces { display: flex; flex-wrap: wrap; justify-content: center; gap: 4px; min-height: 30px; }
 .face { width: 30px; height: 30px; border-radius: 50%; border: 0; padding: 0; display: grid; place-items: center; font-size: var(--fs-1); font-weight: 500; overflow: hidden; }
 .face img { width: 100%; height: 100%; object-fit: cover; }
@@ -221,7 +220,7 @@ a { color: var(--ink); text-decoration-color: var(--control); text-underline-off
 .card .sp { font-style: italic; color: var(--muted); font-size: var(--fs-1); overflow-wrap: anywhere; }
 .dry { display: grid; gap: 6px; }
 .dry-top { display: flex; justify-content: space-between; align-items: center; gap: 8px; font-size: var(--fs-1); }
-.dry-top b { font-weight: 400; font-family: var(--f-mono); }
+.dry-top b { font-weight: 400; font-family: var(--f-body); font-variant-numeric: tabular-nums; }
 .dry-top b.late { color: var(--late); }
 .dry-top b.due { color: var(--water); }
 .dry-top b.ok { color: var(--leaf); }
@@ -266,7 +265,7 @@ input[type=file] { width: 100%; max-width: 100%; font-size: var(--fs-1); }
 .flag.due { color: var(--water); }
 .flag.ok { color: var(--leaf); }
 .cal { display: grid; grid-template-columns: repeat(7, minmax(0, 1fr)); gap: 4px; }
-.cal .c { aspect-ratio: 1; max-width: 100%; border-radius: 8px; background: var(--surface-2); display: grid; place-items: center; font-size: var(--fs-1); color: var(--muted); font-family: var(--f-mono); font-variant-numeric: tabular-nums; }
+.cal .c { aspect-ratio: 1; max-width: 100%; border-radius: 8px; background: var(--surface-2); display: grid; place-items: center; font-size: var(--fs-1); color: var(--muted); font-family: var(--f-body); font-variant-numeric: tabular-nums; }
 .cal .c.w { background: var(--water); color: var(--water-ink); }
 .cal .c.m { background: var(--late-soft); color: var(--late); }
 .cal .c.t { box-shadow: inset 0 0 0 2px var(--ink); }

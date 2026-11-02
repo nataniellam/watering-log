@@ -86,4 +86,4 @@ Watering intervals and care notes are general guidance for Singapore's hot, humi
 
 ## Credits
 
-Type is set in [Geist and Geist Mono](https://vercel.com/font) (SIL Open Font License), loaded from Google Fonts.
+Type is set in [Geist](https://vercel.com/font) (SIL Open Font License), loaded from Google Fonts.
