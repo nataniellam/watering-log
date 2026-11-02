@@ -80,6 +80,7 @@
 }
 
 * { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; text-size-adjust: 100%; }
 body {
   background: var(--bg); color: var(--ink);
   font: 400 var(--fs-2)/1.5 var(--f-body);
@@ -322,17 +323,18 @@ textarea { min-height: 88px; resize: vertical; }
 #fList li.ask .n { display: inline-flex; align-items: center; gap: 6px; }
 .fill-note { font-size: var(--fs-1); color: var(--leaf); display: flex; align-items: flex-start; gap: 6px; }
 .fill-note svg { margin-top: .2em; }
+.fill-note > span { min-width: 0; }
 .fill-note.busy { color: var(--muted); }
 .fill-note.bad { color: var(--late); }
 .fill-note .pn { display: block; margin-top: 6px; color: var(--ink); }
 .fill-note .pn a { color: var(--ink); text-underline-offset: 2px; }
 .has-links a, .refs a { color: var(--ink); text-underline-offset: 2px; white-space: nowrap; }
-.has-links a + a::before, .refs a + a::before { content: " · "; color: var(--muted); display: inline-block; white-space: pre; }
+.has-links a + a::before, .refs a + a::before { content: "· "; color: var(--muted); display: inline-block; white-space: pre; }
 .btn.ai { justify-self: start; color: var(--ink); border-color: var(--control); background: transparent; box-shadow: none; }
 .btn.ai[disabled] { opacity: .6; cursor: progress; }
 input.filled, textarea.filled, select.filled { background: var(--surface-2); border-color: var(--muted); }
 .sun-pick.filled label:has(input:checked) { background: var(--surface-2); }
-.care-src { font-size: var(--fs-1); color: var(--muted); display: grid; gap: 6px; max-width: 65ch; }
+.care-src { font-size: var(--fs-1); color: var(--muted); display: grid; grid-template-columns: minmax(0, 1fr); gap: 6px; max-width: 65ch; }
 .care-src.perenual { gap: 8px; color: var(--ink); }
 .care-src.perenual .specs { font-size: var(--fs-2); }
 .pguide summary { cursor: pointer; color: var(--ink); font-weight: 500; }
@@ -998,7 +1000,7 @@ input.filled, textarea.filled, select.filled { background: var(--surface-2); bor
       ["NParks Flora & Fauna Web", g("nparks.gov.sg/florafaunaweb")],
       ["Missouri Botanical Garden", g("missouribotanicalgarden.org")],
       ["Royal Horticultural Society", g("rhs.org.uk")],
-    ].map(([label, href]) => `<a href="${esc(href)}" target="_blank" rel="noopener">${label}</a>`).join("");
+    ].map(([label, href]) => `<a href="${esc(href)}" target="_blank" rel="noopener">${label}</a>`).join(" ");
   }
   const SOURCE_TEXT = { guide: "the built-in plant guide", claude: "a Claude lookup", photo: "Claude's photo identification" };
 
